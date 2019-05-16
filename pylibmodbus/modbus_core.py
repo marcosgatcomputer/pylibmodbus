@@ -135,3 +135,24 @@ class ModbusCore(object):
             dest,
         )
         return dest
+    
+    #####################################################################
+    #### Add support for libmodbus with GPIO support on Raspberry Pi ####
+    #####################################################################
+    
+    def enable_rpi(self, state):
+	# Enable Raspberry Pi GPIO pins
+        self._run(C.modbus_enable_rpi, state)
+
+    def configure_rpi_bcm_pins(self, BCM_PIN_DE,BCM_PIN_RE):
+	# Configure Raspberry Pi GPIO pins
+       self._run(C.modbus_configure_rpi_bcm_pins, BCM_PIN_DE, BCM_PIN_RE)
+
+    def rpi_pin_export_direction(self):
+	# Export direction for Rpi GPIO pins
+        self._run(C.modbus_rpi_pin_export_direction)
+
+    def rpi_pin_unexport_direction(self):
+	# Unexport direction
+	    self._run(C.modbus_rpi_pin_unexport_direction)
+
