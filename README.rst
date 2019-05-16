@@ -1,12 +1,21 @@
-===========
-pylibmodbus
-===========
+====================
+pylibmodbus Rpi GPIO
+====================
 
-Python Interface for libmodbus written with CFFI.
-This libmodbus wrapper is compatible with Python 2 and Python 3.
+Original code: https://github.com/stephane/pylibmodbus
 
-This wrapper is only compatible with libmodbus v3.1.2 and above.
+Changes: Added support to use Raspberry Pi PIO pins to toggle a Drive Enable / ~ Read Enable signal for RS485 devices that don't have a hardware TX Enable signal. 
 
+First install libmodbus from this branch: https://github.com/dhruvvyas90/libmodbus
+
+Configure, compile and install with:
+    
+    $ ./autogen.sh && ./configure --prefix=/usr && make && sudo make install
+
+Then clone and install pylibmodbus with GPIO support:
+    
+    $ sudo python setup.py install
+    
 Required packages:
 
 - python-dev and libffi-dev
@@ -17,11 +26,3 @@ Licensed under BSD 3-Clause (see LICENSE file for details).
 Tests
 -----
 
-Before running the test suite, you need to launch a TCP server.
-You can use the server provided by libmodbus in ``tests`` directory::
-
-    $ ./tests/bandwidth-server-many-up
-
-Once this server is running, you can launch the Python tests with::
-
-    $ python -m tests
