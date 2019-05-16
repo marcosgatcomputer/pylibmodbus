@@ -4,7 +4,7 @@ pylibmodbus Rpi GPIO
 
 Original code: https://github.com/stephane/pylibmodbus
 
-Changes: Added support to use Raspberry Pi PIO pins to toggle a Drive Enable / ~ Read Enable signal for RS485 devices that don't have a hardware TX Enable signal. 
+Changes: Added support to use Raspberry Pi GPIO pins to toggle a Drive Enable / ~ Read Enable signal for RS485 devices that don't have a hardware TX Enable signal. 
 
 First install libmodbus from this branch: https://github.com/dhruvvyas90/libmodbus
 
@@ -25,4 +25,4 @@ Licensed under BSD 3-Clause (see LICENSE file for details).
 
 Tests
 -----
-
+See test.py for a Modbus client basic example
