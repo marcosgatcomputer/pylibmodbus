@@ -18,8 +18,9 @@ Then clone and install pylibmodbus with GPIO support:
     
 Required packages:
 
-- python-dev and libffi-dev
-- libmodbus and libmodbus-dev
+- python-dev and libffi-dev (these can be installed with pip)
+- libmodbus (from https://github.com/dhruvvyas90/libmodbus do NOT install with apt-get)
+- libmodbus-dev (original package, it can be installed with sudo aptg-get install libmodbus-dev)
 
 Licensed under BSD 3-Clause (see LICENSE file for details).
 
