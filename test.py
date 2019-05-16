@@ -27,10 +27,10 @@ client.configure_rpi_bcm_pins(BCM_PIN_DE,BCM_PIN_RE)
 #Export pin direction (set as outputs)
 client.rpi_pin_export_direction()
 
-#Write Modbus registers, 100 starting from 0
+#Write Modbus registers, 10 starting from 0
 client.write_registers(0, [0]*10)
 
-#Read 100 input registers starting from number 0
+#Read 10 input registers starting from number 0
 result=(client.read_registers(0, 10))
 
 #Show register values
