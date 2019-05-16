@@ -27,3 +27,8 @@ Licensed under BSD 3-Clause (see LICENSE file for details).
 Tests
 -----
 See test.py for a Modbus client basic example
+
+
+Background
+----------
+See https://stackoverflow.com/questions/56036578/pymodbus-read-input-register-of-energy-meter-over-rs485-on-uart-of-raspberry-p/
