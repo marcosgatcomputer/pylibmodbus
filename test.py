@@ -1,8 +1,10 @@
 from pylibmodbus import ModbusRtu
 
 
-#Define Modbus RTU client
+#Define Modbus RTU client (Python 2.x)
 client=ModbusRtu(device="/dev/serial0", baud=19200, parity="N", data_bit=8, stop_bit=1)
+# For Python 3.x you have to explicitly indicate ASCII enconding
+#client=ModbusRtu(device="/dev/serial0".encode("ascii"), baud=19200, parity="N".encode("ascii"), data_bit=8, stop_bit=1)
 
 #Read and set timeout
 timeout_sec = client.get_response_timeout()
