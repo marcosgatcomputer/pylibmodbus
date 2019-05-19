@@ -28,7 +28,10 @@ Tests
 -----
 See test.py for a Modbus client basic example
 
+See also wiki for more details on testing the libmodbus library with GPIO support: https://github.com/marcosgatcomputer/pylibmodbus/wiki/Libmodbus-tests-with-Raspberry-Pi-server---Pocket-Chip-Client
+
 
 Background
 ----------
 See https://stackoverflow.com/questions/56036578/pymodbus-read-input-register-of-energy-meter-over-rs485-on-uart-of-raspberry-p/
+
