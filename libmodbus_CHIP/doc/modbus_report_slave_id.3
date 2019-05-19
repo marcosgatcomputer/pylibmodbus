@@ -1,0 +1,102 @@
+'\" t
+.\"     Title: modbus_report_slave_id
+.\"    Author: [see the "AUTHORS" section]
+.\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
+.\"      Date: 05/14/2019
+.\"    Manual: libmodbus Manual
+.\"    Source: libmodbus v3.1.2
+.\"  Language: English
+.\"
+.TH "MODBUS_REPORT_SLAVE_" "3" "05/14/2019" "libmodbus v3\&.1\&.2" "libmodbus Manual"
+.\" -----------------------------------------------------------------
+.\" * Define some portability stuff
+.\" -----------------------------------------------------------------
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.\" http://bugs.debian.org/507673
+.\" http://lists.gnu.org/archive/html/groff/2009-02/msg00013.html
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.\" -----------------------------------------------------------------
+.\" * set default formatting
+.\" -----------------------------------------------------------------
+.\" disable hyphenation
+.nh
+.\" disable justification (adjust text to left margin only)
+.ad l
+.\" -----------------------------------------------------------------
+.\" * MAIN CONTENT STARTS HERE *
+.\" -----------------------------------------------------------------
+.SH "NAME"
+modbus_report_slave_id \- returns a description of the controller
+.SH "SYNOPSIS"
+.sp
+\fBint modbus_report_slave_id(modbus_t *\fR\fB\fIctx\fR\fR\fB, int \fR\fB\fImax_dest\fR\fR\fB, uint8_t *\fR\fB\fIdest\fR\fR\fB);\fR
+.SH "DESCRIPTION"
+.sp
+The \fBmodbus_report_slave_id()\fR function shall send a request to the controller to obtain a description of the controller\&.
+.sp
+The response stored in \fIdest\fR contains:
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+the slave ID, this unique ID is in reality not unique at all so it\(cqs not possible to depend on it to know how the information are packed in the response\&.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+the run indicator status (0x00 = OFF, 0xFF = ON)
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+additional data specific to each controller\&. For example, libmodbus returns the version of the library as a string\&.
+.RE
+.sp
+The function write at most \fImax_dest\fR bytes from the response to \fIdest\fR\&.
+.SH "RETURN VALUE"
+.sp
+The function shall return the number of read data if successful\&.
+.sp
+If the output was truncated due to the \fImax_dest\fR limit then the return value is the number of bytes which would have been written to \fIdest\fR if enough space had been available\&. Thus, a return value greater than \fImax_dest\fR means that the response data was truncated\&.
+.sp
+Otherwise it shall return \-1 and set errno\&.
+.SH "EXAMPLE"
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+uint8_t tab_bytes[MODBUS_MAX_PDU_LENGTH];
+
+\&.\&.\&.
+
+rc = modbus_report_slave_id(ctx, MODBUS_MAX_PDU_LENGTH, tab_bytes);
+if (rc > 1) {
+    printf("Run Status Indicator: %s\en", tab_bytes[1] ? "ON" : "OFF");
+}
+.fi
+.if n \{\
+.RE
+.\}
+.SH "AUTHORS"
+.sp
+The libmodbus documentation was written by Stéphane Raimbault <stephane\&.raimbault@gmail\&.com>

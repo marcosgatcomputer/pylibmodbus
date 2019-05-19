@@ -1,0 +1,80 @@
+'\" t
+.\"     Title: modbus_set_response_timeout
+.\"    Author: [see the "AUTHORS" section]
+.\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
+.\"      Date: 05/14/2019
+.\"    Manual: libmodbus Manual
+.\"    Source: libmodbus v3.1.2
+.\"  Language: English
+.\"
+.TH "MODBUS_SET_RESPONSE_" "3" "05/14/2019" "libmodbus v3\&.1\&.2" "libmodbus Manual"
+.\" -----------------------------------------------------------------
+.\" * Define some portability stuff
+.\" -----------------------------------------------------------------
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.\" http://bugs.debian.org/507673
+.\" http://lists.gnu.org/archive/html/groff/2009-02/msg00013.html
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.\" -----------------------------------------------------------------
+.\" * set default formatting
+.\" -----------------------------------------------------------------
+.\" disable hyphenation
+.nh
+.\" disable justification (adjust text to left margin only)
+.ad l
+.\" -----------------------------------------------------------------
+.\" * MAIN CONTENT STARTS HERE *
+.\" -----------------------------------------------------------------
+.SH "NAME"
+modbus_set_response_timeout \- set timeout for response
+.SH "SYNOPSIS"
+.sp
+\fBint modbus_set_response_timeout(modbus_t *\fR\fB\fIctx\fR\fR\fB, uint32_t \fR\fB\fIto_sec\fR\fR\fB, uint32_t \fR\fB\fIto_usec\fR\fR\fB);\fR
+.SH "DESCRIPTION"
+.sp
+The \fBmodbus_set_response_timeout()\fR function shall set the timeout interval used to wait for a response\&. When a byte timeout is set, if elapsed time for the first byte of response is longer than the given timeout, an ETIMEDOUT error will be raised by the function waiting for a response\&. When byte timeout is disabled, the full confirmation response must be received before expiration of the response timeout\&.
+.sp
+The value of \fIto_usec\fR argument must be in the range 0 to 999999\&.
+.SH "RETURN VALUE"
+.sp
+The function shall return 0 if successful\&. Otherwise it shall return \-1 and set errno\&.
+.SH "ERRORS"
+.PP
+\fBEINVAL\fR
+.RS 4
+The argument
+\fIctx\fR
+is NULL, or both
+\fIto_sec\fR
+and
+\fIto_usec\fR
+are zero, or
+\fIto_usec\fR
+is larger than 1000000\&.
+.RE
+.SH "EXAMPLE"
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+uint32_t old_response_to_sec;
+uint32_t old_response_to_usec;
+
+/* Save original timeout */
+modbus_get_response_timeout(ctx, &old_response_to_sec, &old_response_to_usec);
+
+/* Define a new timeout of 200ms */
+modbus_set_response_timeout(ctx, 0, 200000);
+.fi
+.if n \{\
+.RE
+.\}
+.SH "SEE ALSO"
+.sp
+\fBmodbus_get_response_timeout\fR(3) \fBmodbus_get_byte_timeout\fR(3) \fBmodbus_set_byte_timeout\fR(3)
+.SH "AUTHORS"
+.sp
+The libmodbus documentation was written by Stéphane Raimbault <stephane\&.raimbault@gmail\&.com>

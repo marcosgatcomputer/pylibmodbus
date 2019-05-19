@@ -1,0 +1,91 @@
+'\" t
+.\"     Title: modbus_rtu_set_rts
+.\"    Author: [see the "AUTHORS" section]
+.\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
+.\"      Date: 05/14/2019
+.\"    Manual: libmodbus Manual
+.\"    Source: libmodbus v3.1.2
+.\"  Language: English
+.\"
+.TH "MODBUS_RTU_SET_RTS" "3" "05/14/2019" "libmodbus v3\&.1\&.2" "libmodbus Manual"
+.\" -----------------------------------------------------------------
+.\" * Define some portability stuff
+.\" -----------------------------------------------------------------
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.\" http://bugs.debian.org/507673
+.\" http://lists.gnu.org/archive/html/groff/2009-02/msg00013.html
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.\" -----------------------------------------------------------------
+.\" * set default formatting
+.\" -----------------------------------------------------------------
+.\" disable hyphenation
+.nh
+.\" disable justification (adjust text to left margin only)
+.ad l
+.\" -----------------------------------------------------------------
+.\" * MAIN CONTENT STARTS HERE *
+.\" -----------------------------------------------------------------
+.SH "NAME"
+modbus_rtu_set_rts \- set the RTS mode in RTU
+.SH "SYNOPSIS"
+.sp
+\fBint modbus_rtu_set_rts(modbus_t *\fR\fB\fIctx\fR\fR\fB, int \fR\fB\fImode\fR\fR\fB)\fR
+.SH "DESCRIPTION"
+.sp
+The \fBmodbus_rtu_set_rts()\fR function shall set the Request To Send mode to communicate on a RS485 serial bus\&. By default, the mode is set to MODBUS_RTU_RTS_NONE and no signal is issued before writing data on the wire\&.
+.sp
+To enable the RTS mode, the values MODBUS_RTU_RTS_UP or MODBUS_RTU_RTS_DOWN must be used, these modes enable the RTS mode and set the polarity at the same time\&. When MODBUS_RTU_RTS_UP is used, an ioctl call is made with RTS flag enabled then data is written on the bus after a delay of 1 ms, then another ioctl call is made with the RTS flag disabled and again a delay of 1 ms occurs\&. The MODBUS_RTU_RTS_DOWN mode applies the same procedure but with an inversed RTS flag\&.
+.sp
+This function can only be used with a context using a RTU backend\&.
+.SH "RETURN VALUE"
+.sp
+The function shall return 0 if successful\&. Otherwise it shall return \-1 and set errno to one of the values defined below\&.
+.SH "ERRORS"
+.PP
+\fBEINVAL\fR
+.RS 4
+The libmodbus backend isn\(cqt RTU or the mode given in argument is invalid\&.
+.RE
+.SH "EXAMPLE"
+.PP
+\fBEnable the RTS mode with positive polarity\fR. 
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+modbus_t *ctx;
+uint16_t tab_reg[10];
+
+ctx = modbus_new_rtu("/dev/ttyS0", 115200, \*(AqN\*(Aq, 8, 1);
+modbus_set_slave(ctx, 1);
+modbus_rtu_set_serial_mode(ctx, MODBUS_RTU_RS485);
+modbus_rtu_set_rts(ctx, MODBUS_RTU_RTS_UP);
+
+if (modbus_connect(ctx) == \-1) {
+    fprintf(stderr, "Connexion failed: %s\en", modbus_strerror(errno));
+    modbus_free(ctx);
+    return \-1;
+}
+
+rc = modbus_read_registers(ctx, 0, 7, tab_reg);
+if (rc == \-1) {
+    fprintf(stderr, "%s\en", modbus_strerror(errno));
+    return \-1;
+}
+
+modbus_close(ctx);
+modbus_free(ctx);
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+.SH "SEE ALSO"
+.sp
+\fBmodbus_rtu_get_rts\fR(3)
+.SH "AUTHORS"
+.sp
+The libmodbus documentation was written by Stéphane Raimbault <stephane\&.raimbault@gmail\&.com>

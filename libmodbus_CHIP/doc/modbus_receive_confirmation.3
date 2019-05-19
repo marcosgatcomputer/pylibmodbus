@@ -1,0 +1,60 @@
+'\" t
+.\"     Title: modbus_receive_confirmation
+.\"    Author: [see the "AUTHORS" section]
+.\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
+.\"      Date: 05/14/2019
+.\"    Manual: libmodbus Manual
+.\"    Source: libmodbus v3.1.2
+.\"  Language: English
+.\"
+.TH "MODBUS_RECEIVE_CONFI" "3" "05/14/2019" "libmodbus v3\&.1\&.2" "libmodbus Manual"
+.\" -----------------------------------------------------------------
+.\" * Define some portability stuff
+.\" -----------------------------------------------------------------
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.\" http://bugs.debian.org/507673
+.\" http://lists.gnu.org/archive/html/groff/2009-02/msg00013.html
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.\" -----------------------------------------------------------------
+.\" * set default formatting
+.\" -----------------------------------------------------------------
+.\" disable hyphenation
+.nh
+.\" disable justification (adjust text to left margin only)
+.ad l
+.\" -----------------------------------------------------------------
+.\" * MAIN CONTENT STARTS HERE *
+.\" -----------------------------------------------------------------
+.SH "NAME"
+modbus_receive_confirmation \- receive a confirmation request
+.SH "SYNOPSIS"
+.sp
+\fBint modbus_receive_confirmation(modbus_t *\fR\fB\fIctx\fR\fR\fB, uint8_t *\fR\fB\fIrsp\fR\fR\fB);\fR
+.SH "DESCRIPTION"
+.sp
+The \fBmodbus_receive_confirmation()\fR function shall receive a request via the socket of the context \fIctx\fR\&. This function must be used for debugging purposes because the received response isn\(cqt checked against the initial request\&. This function can be used to receive request not handled by the library\&.
+.sp
+The maximum size of the response depends on the used backend, in RTU the \fIrsp\fR array must be \fIMODBUS_RTU_MAX_ADU_LENGTH\fR bytes and in TCP it must be \fIMODBUS_TCP_MAX_ADU_LENGTH\fR bytes\&. If you want to write code compatible with both, you can use the constant \fIMODBUS_MAX_ADU_LENGTH\fR (maximum value of all libmodbus backends)\&. Take care to allocate enough memory to store responses to avoid crashes of your server\&.
+.SH "RETURN VALUE"
+.sp
+The function shall store the confirmation request in \fIrsp\fR and return the response length if sucessful\&. The returned request length can be zero if the indication request is ignored (eg\&. a query for another slave in RTU mode)\&. Otherwise it shall return \-1 and set errno\&.
+.SH "EXAMPLE"
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+uint8_t rsp[MODBUS_MAX_ADU_LENGTH];
+rc = modbus_receive_confirmation(ctx, rsp);
+.fi
+.if n \{\
+.RE
+.\}
+.SH "SEE ALSO"
+.sp
+\fBmodbus_send_raw_request\fR(3)
+.SH "AUTHORS"
+.sp
+The libmodbus documentation was written by Stéphane Raimbault <stephane\&.raimbault@gmail\&.com>

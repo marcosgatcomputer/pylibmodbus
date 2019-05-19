@@ -1,0 +1,43 @@
+'\" t
+.\"     Title: modbus_flush
+.\"    Author: [see the "AUTHORS" section]
+.\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
+.\"      Date: 05/14/2019
+.\"    Manual: libmodbus Manual
+.\"    Source: libmodbus v3.1.2
+.\"  Language: English
+.\"
+.TH "MODBUS_FLUSH" "3" "05/14/2019" "libmodbus v3\&.1\&.2" "libmodbus Manual"
+.\" -----------------------------------------------------------------
+.\" * Define some portability stuff
+.\" -----------------------------------------------------------------
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.\" http://bugs.debian.org/507673
+.\" http://lists.gnu.org/archive/html/groff/2009-02/msg00013.html
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.\" -----------------------------------------------------------------
+.\" * set default formatting
+.\" -----------------------------------------------------------------
+.\" disable hyphenation
+.nh
+.\" disable justification (adjust text to left margin only)
+.ad l
+.\" -----------------------------------------------------------------
+.\" * MAIN CONTENT STARTS HERE *
+.\" -----------------------------------------------------------------
+.SH "NAME"
+modbus_flush \- flush non\-transmitted data
+.SH "SYNOPSIS"
+.sp
+\fBint modbus_flush(modbus_t *\fR\fB\fIctx\fR\fR\fB);\fR
+.SH "DESCRIPTION"
+.sp
+The \fBmodbus_flush()\fR function shall discard data received but not read to the socket or file descriptor associated to the context \fIctx\fR\&.
+.SH "RETURN VALUE"
+.sp
+The function shall return 0 or the number of flushed bytes if successful\&. Otherwise it shall return \-1 and set errno\&.
+.SH "AUTHORS"
+.sp
+The libmodbus documentation was written by Stéphane Raimbault <stephane\&.raimbault@gmail\&.com>

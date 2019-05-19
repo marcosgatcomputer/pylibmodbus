@@ -1,0 +1,101 @@
+'\" t
+.\"     Title: modbus_tcp_listen
+.\"    Author: [see the "AUTHORS" section]
+.\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
+.\"      Date: 05/14/2019
+.\"    Manual: libmodbus Manual
+.\"    Source: libmodbus v3.1.2
+.\"  Language: English
+.\"
+.TH "MODBUS_TCP_LISTEN" "3" "05/14/2019" "libmodbus v3\&.1\&.2" "libmodbus Manual"
+.\" -----------------------------------------------------------------
+.\" * Define some portability stuff
+.\" -----------------------------------------------------------------
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.\" http://bugs.debian.org/507673
+.\" http://lists.gnu.org/archive/html/groff/2009-02/msg00013.html
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.\" -----------------------------------------------------------------
+.\" * set default formatting
+.\" -----------------------------------------------------------------
+.\" disable hyphenation
+.nh
+.\" disable justification (adjust text to left margin only)
+.ad l
+.\" -----------------------------------------------------------------
+.\" * MAIN CONTENT STARTS HERE *
+.\" -----------------------------------------------------------------
+.SH "NAME"
+modbus_tcp_listen \- create and listen a TCP Modbus socket (IPv4)
+.SH "SYNOPSIS"
+.sp
+\fBint modbus_tcp_listen(modbus_t *\fR\fB\fIctx\fR\fR\fB, int \fR\fB\fInb_connection\fR\fR\fB);\fR
+.SH "DESCRIPTION"
+.sp
+The \fBmodbus_tcp_listen()\fR function shall create a socket and listen to maximum \fInb_connection\fR incoming connections on the specified IP address\&. The context _ctx _must be allocated and initialized with \fBmodbus_new_tcp\fR(3) before to set the IP address to listen, if IP address is set to NULL, any addresses will be listen\&.
+.SH "RETURN VALUE"
+.sp
+The function shall return a new socket if successful\&. Otherwise it shall return \-1 and set errno\&.
+.SH "EXAMPLE"
+.sp
+For detailed examples, see source files in tests directory:
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+unit\-test\-server\&.c, simple but handle only one connection
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+bandwith\-server\-many\-up\&.c, handles several connections at once
+.RE
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+\&.\&.\&.
+
+/* To listen any addresses on port 502 */
+ctx = modbus_new_tcp(NULL, 502);
+
+/* Handle until 10 established connections */
+server_socket = modbus_tcp_listen(ctx, 10);
+
+/* Clear the reference set of socket */
+FD_ZERO(&refset);
+
+/* Add the server socket */
+FD_SET(server_socket, &refset);
+
+if (select(server_socket + 1, &refset, NULL, NULL, NULL) == \-1) {
+}
+
+\&.\&.\&.
+
+close(server_socket);
+modbus_free(ctx);
+.fi
+.if n \{\
+.RE
+.\}
+.SH "SEE ALSO"
+.sp
+\fBmodbus_new_tcp\fR(3) \fBmodbus_tcp_accept\fR(3) \fBmodbus_tcp_pi_listen\fR(3)
+.SH "AUTHORS"
+.sp
+The libmodbus documentation was written by Stéphane Raimbault <stephane\&.raimbault@gmail\&.com>

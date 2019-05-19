@@ -1,0 +1,127 @@
+'\" t
+.\"     Title: modbus_new_rtu
+.\"    Author: [see the "AUTHORS" section]
+.\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
+.\"      Date: 05/14/2019
+.\"    Manual: libmodbus Manual
+.\"    Source: libmodbus v3.1.2
+.\"  Language: English
+.\"
+.TH "MODBUS_NEW_RTU" "3" "05/14/2019" "libmodbus v3\&.1\&.2" "libmodbus Manual"
+.\" -----------------------------------------------------------------
+.\" * Define some portability stuff
+.\" -----------------------------------------------------------------
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.\" http://bugs.debian.org/507673
+.\" http://lists.gnu.org/archive/html/groff/2009-02/msg00013.html
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.\" -----------------------------------------------------------------
+.\" * set default formatting
+.\" -----------------------------------------------------------------
+.\" disable hyphenation
+.nh
+.\" disable justification (adjust text to left margin only)
+.ad l
+.\" -----------------------------------------------------------------
+.\" * MAIN CONTENT STARTS HERE *
+.\" -----------------------------------------------------------------
+.SH "NAME"
+modbus_new_rtu \- create a libmodbus context for RTU
+.SH "SYNOPSIS"
+.sp
+\fBmodbus_t *modbus_new_rtu(const char *\fR\fB\fIdevice\fR\fR\fB, int \fR\fB\fIbaud\fR\fR\fB, char \fR\fB\fIparity\fR\fR\fB, int \fR\fB\fIdata_bit\fR\fR\fB, int \fR\fB\fIstop_bit\fR\fR\fB);\fR
+.SH "DESCRIPTION"
+.sp
+The \fBmodbus_new_rtu()\fR function shall allocate and initialize a \fImodbus_t\fR structure to communicate in RTU mode on a serial line\&.
+.sp
+The \fIdevice\fR argument specifies the name of the serial port handled by the OS, eg\&. "/dev/ttyS0" or "/dev/ttyUSB0"\&. On Windows, it\(cqs necessary to prepend COM name with "\e\e\&.\e" for COM number greater than 9, eg\&. "\e\e\e\e\&.\e\eCOM10"\&. See http://msdn\&.microsoft\&.com/en\-us/library/aa365247(v=vs\&.85)\&.aspx for details
+.sp
+The \fIbaud\fR argument specifies the baud rate of the communication, eg\&. 9600, 19200, 57600, 115200, etc\&.
+.PP
+The \fIparity\fR argument can have one of the following values
+.RS 4
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+\fIN\fR
+for none
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+\fIE\fR
+for even
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+\fIO\fR
+for odd
+.RE
+.RE
+.sp
+The \fIdata_bits\fR argument specifies the number of bits of data, the allowed values are 5, 6, 7 and 8\&.
+.sp
+The \fIstop_bits\fR argument specifies the bits of stop, the allowed values are 1 and 2\&.
+.sp
+Once the \fImodbus_t\fR structure is initialized, you must set the slave of your device with \fBmodbus_set_slave\fR(3) and connect to the serial bus with \fBmodbus_connect\fR(3)\&.
+.SH "RETURN VALUE"
+.sp
+The function shall return a pointer to a \fImodbus_t\fR structure if successful\&. Otherwise it shall return NULL and set errno to one of the values defined below\&.
+.SH "ERRORS"
+.PP
+\fBEINVAL\fR
+.RS 4
+An invalid argument was given\&.
+.RE
+.SH "EXAMPLE"
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+modbus_t *ctx;
+
+ctx = modbus_new_rtu("/dev/ttyUSB0", 115200, \*(AqN\*(Aq, 8, 1);
+if (ctx == NULL) {
+    fprintf(stderr, "Unable to create the libmodbus context\en");
+    return \-1;
+}
+
+modbus_set_slave(ctx, YOUR_DEVICE_ID);
+
+if (modbus_connect(ctx) == \-1) {
+    fprintf(stderr, "Connection failed: %s\en", modbus_strerror(errno));
+    modbus_free(ctx);
+    return \-1;
+}
+.fi
+.if n \{\
+.RE
+.\}
+.SH "SEE ALSO"
+.sp
+\fBmodbus_new_tcp\fR(3) \fBmodbus_free\fR(3)
+.SH "AUTHORS"
+.sp
+The libmodbus documentation was written by Stéphane Raimbault <stephane\&.raimbault@gmail\&.com>

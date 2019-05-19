@@ -1,0 +1,48 @@
+'\" t
+.\"     Title: modbus_receive
+.\"    Author: [see the "AUTHORS" section]
+.\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
+.\"      Date: 05/14/2019
+.\"    Manual: libmodbus Manual
+.\"    Source: libmodbus v3.1.2
+.\"  Language: English
+.\"
+.TH "MODBUS_RECEIVE" "3" "05/14/2019" "libmodbus v3\&.1\&.2" "libmodbus Manual"
+.\" -----------------------------------------------------------------
+.\" * Define some portability stuff
+.\" -----------------------------------------------------------------
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.\" http://bugs.debian.org/507673
+.\" http://lists.gnu.org/archive/html/groff/2009-02/msg00013.html
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.\" -----------------------------------------------------------------
+.\" * set default formatting
+.\" -----------------------------------------------------------------
+.\" disable hyphenation
+.nh
+.\" disable justification (adjust text to left margin only)
+.ad l
+.\" -----------------------------------------------------------------
+.\" * MAIN CONTENT STARTS HERE *
+.\" -----------------------------------------------------------------
+.SH "NAME"
+modbus_receive \- receive an indication request
+.SH "SYNOPSIS"
+.sp
+\fBint modbus_receive(modbus_t *\fR\fB\fIctx\fR\fR\fB, uint8_t *\fR\fB\fIreq\fR\fR\fB);\fR
+.SH "DESCRIPTION"
+.sp
+The \fBmodbus_receive()\fR function shall receive an indication request from the socket of the context \fIctx\fR\&. This function is used by Modbus slave/server to receive and analyze indication request sent by the masters/clients\&.
+.sp
+If you need to use another socket or file descriptor than the one defined in the context \fIctx\fR, see the function \fBmodbus_set_socket\fR(3)\&.
+.SH "RETURN VALUE"
+.sp
+The function shall store the indication request in \fIreq\fR and return the request length if sucessful\&. The returned request length can be zero if the indication request is ignored (eg\&. a query for another slave in RTU mode)\&. Otherwise it shall return \-1 and set errno\&.
+.SH "SEE ALSO"
+.sp
+\fBmodbus_set_socket\fR(3) \fBmodbus_reply\fR(3)
+.SH "AUTHORS"
+.sp
+The libmodbus documentation was written by Stéphane Raimbault <stephane\&.raimbault@gmail\&.com>

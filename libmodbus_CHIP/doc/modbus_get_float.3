@@ -1,0 +1,48 @@
+'\" t
+.\"     Title: modbus_get_float
+.\"    Author: [see the "AUTHORS" section]
+.\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
+.\"      Date: 05/14/2019
+.\"    Manual: libmodbus Manual
+.\"    Source: libmodbus v3.1.2
+.\"  Language: English
+.\"
+.TH "MODBUS_GET_FLOAT" "3" "05/14/2019" "libmodbus v3\&.1\&.2" "libmodbus Manual"
+.\" -----------------------------------------------------------------
+.\" * Define some portability stuff
+.\" -----------------------------------------------------------------
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.\" http://bugs.debian.org/507673
+.\" http://lists.gnu.org/archive/html/groff/2009-02/msg00013.html
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.\" -----------------------------------------------------------------
+.\" * set default formatting
+.\" -----------------------------------------------------------------
+.\" disable hyphenation
+.nh
+.\" disable justification (adjust text to left margin only)
+.ad l
+.\" -----------------------------------------------------------------
+.\" * MAIN CONTENT STARTS HERE *
+.\" -----------------------------------------------------------------
+.SH "NAME"
+modbus_get_float \- get a float value from 2 registers
+.SH "SYNOPSIS"
+.sp
+\fBfloat modbus_get_float(const uint16_t *\fR\fB\fIsrc\fR\fR\fB);\fR
+.sp
+Warning, this function is \fBdeprecated\fR since libmodbus v3\&.2\&.0 and has been replaced by \fBmodbus_get_float_dcba()\fR\&.
+.SH "DESCRIPTION"
+.sp
+The \fBmodbus_get_float()\fR function shall get a float from 4 bytes in Modbus format (DCBA byte order)\&. The \fIsrc\fR array must be a pointer on two 16 bits values, for example, if the first word is set to 0x4465 and the second to 0x229a, the float value will be 916\&.540649\&.
+.SH "RETURN VALUE"
+.sp
+The function shall return a float\&.
+.SH "SEE ALSO"
+.sp
+\fBmodbus_set_float\fR(3) \fBmodbus_set_float_dcba\fR(3) \fBmodbus_get_float_dcba\fR(3)
+.SH "AUTHORS"
+.sp
+The libmodbus documentation was written by Stéphane Raimbault <stephane\&.raimbault@gmail\&.com>

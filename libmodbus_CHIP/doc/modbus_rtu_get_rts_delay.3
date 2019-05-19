@@ -1,0 +1,56 @@
+'\" t
+.\"     Title: modbus_rtu_get_rts_delay
+.\"    Author: [see the "AUTHORS" section]
+.\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
+.\"      Date: 05/14/2019
+.\"    Manual: libmodbus Manual
+.\"    Source: libmodbus v3.1.2
+.\"  Language: English
+.\"
+.TH "MODBUS_RTU_GET_RTS_D" "3" "05/14/2019" "libmodbus v3\&.1\&.2" "libmodbus Manual"
+.\" -----------------------------------------------------------------
+.\" * Define some portability stuff
+.\" -----------------------------------------------------------------
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.\" http://bugs.debian.org/507673
+.\" http://lists.gnu.org/archive/html/groff/2009-02/msg00013.html
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.\" -----------------------------------------------------------------
+.\" * set default formatting
+.\" -----------------------------------------------------------------
+.\" disable hyphenation
+.nh
+.\" disable justification (adjust text to left margin only)
+.ad l
+.\" -----------------------------------------------------------------
+.\" * MAIN CONTENT STARTS HERE *
+.\" -----------------------------------------------------------------
+.SH "NAME"
+modbus_rtu_get_rts_delay \- get the current RTS delay in RTU
+.SH "SYNOPSIS"
+.sp
+\fBint modbus_rtu_get_rts_delay(modbus_t *\fR\fB\fIctx\fR\fR\fB);\fR
+.SH "DESCRIPTION"
+.sp
+The \fImodbus_rtu_get_rts_delay()\fR function shall get the current Request To Send delay period of the libmodbus context \fIctx\fR\&.
+.sp
+This function can only be used with a context using a RTU backend\&.
+.SH "RETURN VALUE"
+.sp
+The \fImodbus_rtu_get_rts_delay()\fR function shall return the current RTS delay in microseconds if successful\&. Otherwise it shall return \-1 and set errno\&.
+.SH "ERRORS"
+.PP
+\fBEINVAL\fR
+.RS 4
+The libmodbus backend is not RTU\&.
+.RE
+.SH "SEE ALSO"
+.sp
+\fBmodbus_rtu_set_rts_delay\fR(3)
+.SH "AUTHORS"
+.sp
+Jimmy Bergström <jimmy@ekontroll\&.com>
+.sp
+The libmodbus documentation was written by Stéphane Raimbault <stephane\&.raimbault@gmail\&.com>

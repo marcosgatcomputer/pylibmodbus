@@ -1,0 +1,46 @@
+'\" t
+.\"     Title: modbus_get_byte_from_bits
+.\"    Author: [see the "AUTHORS" section]
+.\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
+.\"      Date: 05/14/2019
+.\"    Manual: libmodbus Manual
+.\"    Source: libmodbus v3.1.2
+.\"  Language: English
+.\"
+.TH "MODBUS_GET_BYTE_FROM" "3" "05/14/2019" "libmodbus v3\&.1\&.2" "libmodbus Manual"
+.\" -----------------------------------------------------------------
+.\" * Define some portability stuff
+.\" -----------------------------------------------------------------
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.\" http://bugs.debian.org/507673
+.\" http://lists.gnu.org/archive/html/groff/2009-02/msg00013.html
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.\" -----------------------------------------------------------------
+.\" * set default formatting
+.\" -----------------------------------------------------------------
+.\" disable hyphenation
+.nh
+.\" disable justification (adjust text to left margin only)
+.ad l
+.\" -----------------------------------------------------------------
+.\" * MAIN CONTENT STARTS HERE *
+.\" -----------------------------------------------------------------
+.SH "NAME"
+modbus_get_byte_from_bits \- get the value from many bits
+.SH "SYNOPSIS"
+.sp
+\fBuint8_t modbus_get_byte_from_bits(const uint8_t *\fR\fB\fIsrc\fR\fR\fB, int \fR\fB\fIindex\fR\fR\fB, unsigned int \fR\fB\fInb_bits\fR\fR\fB);\fR
+.SH "DESCRIPTION"
+.sp
+The \fBmodbus_get_byte_from_bits()\fR function shall extract a value from many bits\&. All \fInb_bits\fR bits from \fIsrc\fR at position \fIindex\fR will be read as a single value\&. To obtain a full byte, set nb_bits to 8\&.
+.SH "RETURN VALUE"
+.sp
+The function shall return a byte containing the bits read\&.
+.SH "SEE ALSO"
+.sp
+\fBmodbus_set_bits_from_byte\fR(3) \fBmodbus_set_bits_from_bytes\fR(3)
+.SH "AUTHORS"
+.sp
+The libmodbus documentation was written by Stéphane Raimbault <stephane\&.raimbault@gmail\&.com>

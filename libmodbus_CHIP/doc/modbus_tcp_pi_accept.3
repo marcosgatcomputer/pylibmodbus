@@ -1,0 +1,68 @@
+'\" t
+.\"     Title: modbus_tcp_pi_accept
+.\"    Author: [see the "AUTHORS" section]
+.\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
+.\"      Date: 05/14/2019
+.\"    Manual: libmodbus Manual
+.\"    Source: libmodbus v3.1.2
+.\"  Language: English
+.\"
+.TH "MODBUS_TCP_PI_ACCEPT" "3" "05/14/2019" "libmodbus v3\&.1\&.2" "libmodbus Manual"
+.\" -----------------------------------------------------------------
+.\" * Define some portability stuff
+.\" -----------------------------------------------------------------
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.\" http://bugs.debian.org/507673
+.\" http://lists.gnu.org/archive/html/groff/2009-02/msg00013.html
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.\" -----------------------------------------------------------------
+.\" * set default formatting
+.\" -----------------------------------------------------------------
+.\" disable hyphenation
+.nh
+.\" disable justification (adjust text to left margin only)
+.ad l
+.\" -----------------------------------------------------------------
+.\" * MAIN CONTENT STARTS HERE *
+.\" -----------------------------------------------------------------
+.SH "NAME"
+modbus_tcp_pi_accept \- accept a new connection on a TCP PI Modbus socket (IPv6)
+.SH "SYNOPSIS"
+.sp
+\fBint modbus_tcp_pi_accept(modbus_t *\fR\fB\fIctx\fR\fR\fB, int *\*(Aqs);\fR
+.SH "DESCRIPTION"
+.sp
+The \fBmodbus_tcp_pi_accept()\fR function shall extract the first connection on the queue of pending connections, create a new socket and store it in libmodbus context given in argument\&. If available, \fIaccept4()\fR with SOCK_CLOEXEC will be called instead of \fBaccept()\fR\&.
+.SH "RETURN VALUE"
+.sp
+The function shall return a new socket if successful\&. Otherwise it shall return \-1 and set errno\&.
+.SH "EXAMPLE"
+.sp
+For detailed example, see unit\-test\-server\&.c source file in tests directory\&.
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+\&.\&.\&.
+
+ctx = modbus_new_tcp_pi("::0", 502);
+s = modbus_tcp_pi_listen(ctx, 1);
+modbus_tcp_pi_accept(ctx, &s);
+
+\&.\&.\&.
+
+close(s)
+modbus_free(ctx);
+.fi
+.if n \{\
+.RE
+.\}
+.SH "SEE ALSO"
+.sp
+\fBmodbus_tcp_pi_accept\fR(3) \fBmodbus_tcp_listen\fR(3) \fBmodbus_tcp_pi_listen\fR(3)
+.SH "AUTHORS"
+.sp
+The libmodbus documentation was written by Stéphane Raimbault <stephane\&.raimbault@gmail\&.com>
