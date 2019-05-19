@@ -1,0 +1,10 @@
+Opening /dev/ttyS0 at 57600 bauds (N, 8, 1)
+** UNIT TESTING **
+1/1 No response timeout modification on connect: OK
+
+TEST WRITE/READ:
+[11][05][01][30][FF][00][8F][59]
+Waiting for a confirmation...
+Bytes flushed (0)
+1/2 modbus_write_bit: 
+Line 143: assertion error for 'rc == 1': 
