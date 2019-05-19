@@ -1,0 +1,671 @@
+chip@chip:~/modbus/libmodbus-master/tests$ sudo ./client_half_duplex rtu                 
+Rpi RTU enabled.
+BCM Pin DE set as 1015 and pin RE set as 1016.
+/sys/class/gpio/gpio1015/directionRPI pin exported and pin direction configured successfully.
+/sys/class/gpio/gpio1016/directionRPI pin exported and pin direction configured successfully.
+Opening /dev/ttyS0 at 9600 bauds (N, 8, 1)
+** UNIT TESTING **
+1/1 No response timeout modification on connect: OK
+
+TEST WRITE/READ:
+[11][05][01][30][FF][00][8F][59]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+<11><05><01><30><FF><00><8F><59>
+1/2 modbus_write_bit: OK
+[11][01][01][30][00][01][FE][A9]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+<11><01><01><01><94><88>
+2/2 modbus_read_bits: OK
+OK
+[11][0F][01][30][00][25][05][CD][6B][B2][0E][1B][CC][C1]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+<11><0F><01><30><00><25><97><73>
+1/2 modbus_write_bits: OK
+[11][01][01][30][00][25][FE][B2]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+<11><01><05><CD><6B><B2><0E><1B><45><E6>
+2/2 modbus_read_bits: OK
+OK
+OK
+OK
+OK
+OK
+OK
+[11][02][01][C4][00][16][BB][55]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+<11><02><03><AC><DB><35><20><18>
+1/1 modbus_read_input_bits: OK
+OK
+OK
+OK
+OK
+[11][06][01][6B][12][34][F6][0D]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+<11><06><01><6B><12><34><F6><0D>
+1/2 modbus_write_register: OK
+[11][03][01][6B][00][01][F6][BA]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+<11><03><02><12><34><74><F0>
+2/2 modbus_read_registers: OK
+OK
+[11][10][01][6B][00][03][06][02][2B][00][01][00][64][DB][78]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+<11><10><01><6B><00><03><F2><B8>
+1/5 modbus_write_registers: OK
+[11][03][01][6B][00][03][77][7B]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+<11><03><06><02><2B><00><01><00><64><99><7A>
+2/5 modbus_read_registers: OK
+OK
+OK
+OK
+[11][03][01][6B][00][00][37][7A]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+ERROR Connection timed out: select
+Bytes flushed (0)
+3/5 modbus_read_registers (0): OK
+[11][17][01][6B][00][03][01][6C][00][02][04][00][00][00][00][EA][BE]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+<11><17><06><02><2B><00><00><00><00><C9><AE>
+4/5 modbus_write_and_read_registers: OK
+OK
+OK
+OK
+[11][04][01][08][00][01][B3][64]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+<11><04><02><00><0A><F8><F4>
+1/1 modbus_read_input_registers: OK
+OK
+1/1 Write mask: [11][06][01][6B][00][12][7B][77]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+<11><06><01><6B><00><12><7B><77>
+[11][16][01][6B][00][F2][00][25][B3][3A]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+<31><51><A0><2D><40>
+Request for slave 49 ignored (not 17)
+The responding slave 49 isn't the requested slave 17
+Bytes flushed (0)
+
+Line 287: assertion error for 'rc != -1': FAILED (ffffffff == -1)
+
+RPI BCM Pin Unexported successfully.
+RPI BCM Pin Unexported successfully.
+chip@chip:~/modbus/libmodbus-master/tests$ sudo ./client_half_duplex rtu
+Rpi RTU enabled.
+BCM Pin DE set as 1015 and pin RE set as 1016.
+/sys/class/gpio/gpio1015/directionRPI pin exported and pin direction configured successfully.
+/sys/class/gpio/gpio1016/directionRPI pin exported and pin direction configured successfully.
+Opening /dev/ttyS0 at 9600 bauds (N, 8, 1)
+** UNIT TESTING **
+1/1 No response timeout modification on connect: OK
+
+TEST WRITE/READ:
+[11][05][01][30][FF][00][8F][59]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+<11><05><01><30><FF><00><8F><59>
+1/2 modbus_write_bit: OK
+[11][01][01][30][00][01][FE][A9]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+<11><01><01><01><94><88>
+2/2 modbus_read_bits: OK
+OK
+[11][0F][01][30][00][25][05][CD][6B][B2][0E][1B][CC][C1]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+<11><0F><01><30><00><25><97><73>
+1/2 modbus_write_bits: OK
+[11][01][01][30][00][25][FE][B2]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+<11><01><05><CD><6B><B2><0E><1B><45><E6>
+2/2 modbus_read_bits: OK
+OK
+OK
+OK
+OK
+OK
+OK
+[11][02][01][C4][00][16][BB][55]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+<11><02><03><AC><DB><35><20><18>
+1/1 modbus_read_input_bits: OK
+OK
+OK
+OK
+OK
+[11][06][01][6B][12][34][F6][0D]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+<11><06><01><6B><12><34><F6><0D>
+1/2 modbus_write_register: OK
+[11][03][01][6B][00][01][F6][BA]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+<11><03><02><12><34><74><F0>
+2/2 modbus_read_registers: OK
+OK
+[11][10][01][6B][00][03][06][02][2B][00][01][00][64][DB][78]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+<11><10><01><6B><00><03><F2><B8>
+1/5 modbus_write_registers: OK
+[11][03][01][6B][00][03][77][7B]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+<11><03><06><02><2B><00><01><00><64><99><7A>
+2/5 modbus_read_registers: OK
+OK
+OK
+OK
+[11][03][01][6B][00][00][37][7A]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+ERROR Connection timed out: select
+Bytes flushed (0)
+3/5 modbus_read_registers (0): OK
+[11][17][01][6B][00][03][01][6C][00][02][04][00][00][00][00][EA][BE]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+<11><17><06><02><2B><00><00><00><00><C9><AE>
+4/5 modbus_write_and_read_registers: OK
+OK
+OK
+OK
+[11][04][01][08][00][01][B3][64]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+<11><04><02><00><0A><F8><F4>
+1/1 modbus_read_input_registers: OK
+OK
+1/1 Write mask: [11][06][01][6B][00][12][7B][77]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+<11><06><01><6B><00><12><7B><77>
+[11][16][01][6B][00][F2][00][25][B3][3A]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+<11><16><01><6B><00><F2><00><25><B3><3A>
+OK
+[11][03][01][6B][00][01][F6][BA]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+<11><03><02><00><17><39><89>
+OK
+
+TEST FLOATS
+1/4 Set/get float ABCD: OK
+OK
+2/4 Set/get float DCBA: OK
+OK
+3/4 Set/get float BADC: OK
+OK
+4/4 Set/get float CDAB: OK
+OK
+
+At this point, error messages doesn't mean the test has failed
+
+TEST ILLEGAL DATA ADDRESS:
+[11][01][01][30][00][26][BE][B3]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+<11><81><02><C0><54>
+ERROR Illegal data address
+* modbus_read_bits: OK
+[11][02][01][C4][00][17][7A][95]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+<11><82><02><C0><A4>
+ERROR Illegal data address
+* modbus_read_input_bits: OK
+[11][03][01][6B][00][04][36][B9]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+<11><83><02><C1><34>
+ERROR Illegal data address
+* modbus_read_registers: OK
+[11][04][01][08][00][02][F3][65]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+<11><84><02><C3><04>
+ERROR Illegal data address
+* modbus_read_input_registers: OK
+[11][05][01][55][FF][00][9F][46]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+<11><85><02><C2><94>
+ERROR Illegal data address
+* modbus_write_bit: OK
+[11][0F][01][55][00][25][05][AC][DB][B5][0E][1B][71][5A]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+<11><8F><02><C4><34>
+ERROR Illegal data address
+* modbus_write_coils: OK
+[11][06][01][6E][F1][47][EE][D9]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+<11><86><02><C2><64>
+ERROR Illegal data address
+* modbus_write_register: OK
+[11][10][01][6E][00][03][06][F1][47][00][20][00][00][1E][43]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+<11><90><02><CC><04>
+ERROR Illegal data address
+* modbus_write_registers: OK
+
+TEST TOO MANY DATA ERROR:
+ERROR Too many bits requested (2001 > 2000)
+* modbus_read_bits: OK
+ERROR Too many discrete inputs requested (2001 > 2000)
+* modbus_read_input_bits: OK
+ERROR Too many registers requested (126 > 125)
+* modbus_read_registers: OK
+ERROR Too many input registers requested (126 > 125)
+* modbus_read_input_registers: OK
+ERROR Writing too many bits (1969 > 1968)
+* modbus_write_bits: OK
+ERROR Trying to write to too many registers (124 > 123)
+* modbus_write_registers: OK
+
+TEST SLAVE REPLY:
+[12][03][01][6B][00][03][77][48]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+ERROR Connection timed out: select
+Bytes flushed (0)
+1-A/3 No response from slave 18: OK
+[12][03][00][01][01][01][D6][F9]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+[12][03][04][00][00][00][00][D8][F2]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+ERROR Connection timed out: select
+Bytes flushed (0)
+1-B/3 No response from slave 18 on indication/confirmation messages: OK
+[12][03][00][01][FF][FF][17][19]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+ERROR Connection timed out: select
+Bytes flushed (0)
+1-C/3 No response from slave 18 with invalid request: OK
+OK
+[00][03][01][6B][00][03][74][3A]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+ERROR Connection timed out: select
+Bytes flushed (0)
+2/3 No reply after a broadcast query: OK
+3/3 Response with an invalid TID or slave: [11][03][00][6D][00][01][17][47]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+<12><03><02><00><00><3D><87>
+Request for slave 18 ignored (not 17)
+The responding slave 18 isn't the requested slave 17
+Bytes flushed (0)
+OK
+1/2 Report slave ID truncated: 
+[11][11][CD][EC]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+<11><11><0A><B4><FF><4C><4D><42><33><2E><31><2E><32><77><FD>
+OK
+2/2 Report slave ID: 
+[11][11][CD][EC]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+<11><11><0A><B4><FF><4C><4D><42><33><2E><31><2E><32><77><FD>
+OK
+OK
+OK
+Additional data: LMB3.1.2
+1/6 Invalid response timeout (zero): OK
+2/6 Invalid response timeout (too large us): OK
+3/6 Invalid byte timeout (too large us): OK
+[11][03][01][6B][00][03][77][7B]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+ERROR Connection timed out: select
+Bytes flushed (0)
+4/6 1us response timeout: OK
+Bytes flushed (0)
+[11][03][00][6E][00][01][E7][47]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+ERROR Connection timed out: select
+Bytes flushed (0)
+5/6 Too short response timeout (0.2s < 0.5s): OK
+Bytes flushed (0)
+[11][03][00][6E][00][01][E7][47]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+<11><03><02><00><00><79><87>
+6/6 Adequate response timeout (0.6s > 0.5s): OK
+[11][03][00][6E][00][01][E7][47]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+<11><03><02><00><00><79><87>
+7/7 Disable byte timeout: OK
+
+TEST BAD RESPONSE ERROR:
+[11][03][01][6B][00][02][B6][BB]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+<11><03><02><00><17><39><89>
+Message length not corresponding to the computed length (7 != 9)
+Bytes flushed (0)
+* modbus_read_registers: OK
+
+TEST MANUAL EXCEPTION:
+[11][03][00][6C][00][03][C7][46]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+Waiting for a confirmation...
+<11><83><06><C0><F7>
+ERROR Slave device or server is busy
+* modbus_read_registers at special address: OK
+
+TEST RAW REQUESTS:
+[11][03][00][01][00][05][D6][99]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+* modbus_send_raw_request: OK
+* modbus_receive_confirmation: Waiting for a confirmation...
+<11><03><0A><00><00><00><00><00><00><00><00><00><00><1A><26>
+OK
+[11][01][00][01][00][00][6F][5A]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+* try function 0x1: read 0 values: Waiting for a confirmation...
+<11><81><03><01><94>
+OK
+[11][01][00][01][07][D1][AD][36]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+* try function 0x1: read 2001 values: Waiting for a confirmation...
+<11><81><03><01><94>
+OK
+[11][02][00][01][00][00][2B][5A]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+* try function 0x2: read 0 values: Waiting for a confirmation...
+<11><82><03><01><64>
+OK
+[11][02][00][01][07][D1][E9][36]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+* try function 0x2: read 2001 values: Waiting for a confirmation...
+<11><82><03><01><64>
+OK
+[11][03][00][01][00][00][16][9A]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+* try function 0x3: read 0 values: Waiting for a confirmation...
+<11><83><03><00><F4>
+OK
+[11][03][00][01][00][7E][96][BA]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+* try function 0x3: read 126 values: Waiting for a confirmation...
+<11><83><03><00><F4>
+OK
+[11][04][00][01][00][00][A3][5A]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+* try function 0x4: read 0 values: Waiting for a confirmation...
+<11><84><03><02><C4>
+OK
+[11][04][00][01][00][7E][23][7A]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+* try function 0x4: read 126 values: Waiting for a confirmation...
+<11><84><03><02><C4>
+OK
+[11][17][00][00][00][00][00][00][00][01][02][12][34][A6][85]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+* try function 0x17: read 0 values: Waiting for a confirmation...
+<11><97><03><0F><F4>
+OK
+[11][17][00][00][00][7E][00][00][00][01][02][12][34][20][2D]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+* try function 0x17: read 126 values: Waiting for a confirmation...
+<11><97><03><0F><F4>
+OK
+[11][10][01][6B][00][00][00][02][2B][00][01][00][64][FD][6D]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+* try function 0x10: write 0 values: Waiting for a confirmation...
+<11><90><03><0D><C4>
+OK
+[11][10][01][6B][00][7C][06][02][2B][00][01][00][64][9C][1C]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+* try function 0x10: write 124 values: Waiting for a confirmation...
+<11><90><03><0D><C4>
+OK
+[11][0F][01][6B][00][00][00][02][2B][00][01][00][64][28][86]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+* try function 0xF: write 0 values: Waiting for a confirmation...
+<11><8F><03><05><F4>
+OK
+[11][0F][01][6B][07][B1][06][02][2B][00][01][00][64][A2][0E]
+GPIO1015 written : 1 successfully !
+GPIO1016 written : 1 successfully !
+GPIO1015 written : 0 successfully !
+GPIO1016 written : 0 successfully !
+* try function 0xF: write 1969 values: Waiting for a confirmation...
+<11><8F><03><05><F4>
+OK
+
+TEST INVALID INITIALIZATION:
+The device string is empty
+OK
+The baud rate value must not be zero
+OK
+The service string is empty
+OK
+
+ALL TESTS PASS WITH SUCCESS.
+chip@chip:~/modbus/libmodbus-master/tests$ 
+
+
